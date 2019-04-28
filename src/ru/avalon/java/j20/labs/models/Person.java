@@ -1,9 +1,11 @@
 package ru.avalon.java.j20.labs.models;
 
+import java.util.Objects;
+
 /**
  * Представление о человеке.
  */
-public class Person {
+public class Person{
     /**
      * Имя.
      */
@@ -41,5 +43,20 @@ public class Person {
      */
     public String getSurname() {
         return surname;
+    }
+
+    @Override // метод описан в Object
+    public boolean equals(Object otherObject) { //  сравнение на РАВЕНСТВО
+        if (otherObject instanceof Person) { // проверка на то, является ли Object Person? Если да, то:
+            Person otherPerson = (Person) otherObject; // (Person) - приведение к типу
+            return name.equalsIgnoreCase(otherPerson.name)
+                    && surname.equalsIgnoreCase(otherPerson.surname); // вернется true, если у двух разных Person равны и имя и фамилия - лексикографически равны
+        }
+        return false; // если otherObject не Person, то возвращаем false
+    }
+
+    @Override // метод описан в Object
+    public int hashCode() {
+        return Objects.hash(name, surname);
     }
 }

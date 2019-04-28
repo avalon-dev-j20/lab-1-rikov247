@@ -1,5 +1,6 @@
 package ru.avalon.java.j20.labs.tasks;
 
+import java.util.*;
 import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
 
@@ -7,9 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Задание №5.
+ * Задание №5. Выполнено.
  *
- * <p>Тема: "Изучение отличия между списками и наборами".
+ * <p>
+ * Тема: "Изучение отличия между списками и наборами". Списки (List) могут
+ * содержать одинаковые элементы, а множества (Set) содержат только разные
+ * элемента. Множества (Set) — неупорядоченные коллекции (элементы заносятся не
+ * по порядку их дообавления), списки (List) — упорядоченные, где каждый элемент
+ * имеет индекс (заносятся по порядку их добавления).
  */
 public class Task5 implements Task {
 
@@ -23,22 +29,16 @@ public class Task5 implements Task {
      */
     @Override
     public void run() {
-        final int[] array = arrayFactory.getInstance(20);
+        final Number[] array = arrayFactory.getInstance(20);
 
-        List<Integer> list = null;
+        List<Integer> list = new ArrayList<>();
+        for (Number E : array) { // обращение к каждому члену массива array
+            list.add(E.intValue()); // добавление элементов в массив
+        }
 
-        Set<Integer> set = null;
-
-        /**
-         * TODO(Студент): Выполните задание №5
-         *
-         * 1. Проинициализируйте переменные list и set объектами
-         *    подходящих классов.
-         *
-         * 2. В обе коллекции поместите элементы массива array.
-         *
-         * 3. С использованием отладчика проверьте корректность
-         *    выполнения задания.
-         */
+        Set<Integer> set = new HashSet<>();
+        for (Number E : array) { // обращение к каждому члену массива array
+            set.add(E.intValue()); // добавление элементов в массив
+        }
     }
 }

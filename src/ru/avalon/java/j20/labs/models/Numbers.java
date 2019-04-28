@@ -10,13 +10,18 @@ public final class Numbers {
 
     /**
      * Возвращает сумму значений переданного массиа.
+     * E - неизвестно что, но точно Number
      *
      * @param values массив чисел
+     * @param <E> абстрактный класс, который расширяет Number
      * @return сумма элементов массива
      */
-    public static int sum(int[] values) {
-        int sum = 0;
-        for (int value : values) sum += value;
+    public static <E extends Number> double sum(E[] values) {
+        double sum = 0;
+        //  value - придуманное название каждого элемента массива values; 
+        // : - обозначение обращения к элементу массива
+        //doubleValue - преобразование в тип double
+        for (E value : values) sum += value.doubleValue(); 
         return sum;
     }
 
@@ -25,9 +30,10 @@ public final class Numbers {
      * массива чисел.
      *
      * @param values массив значений
+     * @param <E> абстрактный класс, который расширяет Number
      * @return среднее арифметическое с точностью до типа {@code double}.
      */
-    public static double avg(int[] values) {
+    public static <E extends Number> double avg(E[] values) {
         return (double) sum(values) / values.length;
     }
 
@@ -36,20 +42,22 @@ public final class Numbers {
      *
      * @param a перое значение
      * @param b второе значение
+     * @param <E> абстрактный класс, который расширяет Number
      * @return большее из двух значений
      */
-    public static int max(int a, int b) {
-        return a > b ? a : b;
+    public static <E extends Number> double max(E a, E b) {
+        return a.doubleValue() > b.doubleValue() ? a.doubleValue() : b.doubleValue();
     }
 
     /**
      * Выполняет поиск максимального значения в массиве.
      *
      * @param values массив значений
+     * @param <E> абстрактный класс, который расширяет Number
      * @return максимальное значение массива
      */
-    public static int max(int[] values) {
-        int result = values[0];
+    public static <E extends Number> double max(E[] values) {
+        double result = values[0].doubleValue();
         for (int i = 1; i < values.length; i++) {
             result = max(result, values[i]);
         }
@@ -61,20 +69,22 @@ public final class Numbers {
      *
      * @param a первое значение
      * @param b второе значение
+     * @param <E> абстрактный класс, который расширяет Number
      * @return меньшее из дух значений
      */
-    public static int min(int a, int b) {
-        return a < b ? a : b;
+    public static <E extends Number> double min(E a, E b) {
+        return a.doubleValue() < b.doubleValue() ? a.doubleValue() : b.doubleValue();
     }
 
     /**
      * Выполняет поиск минимального значения массива.
      *
      * @param values массив значений
+     * @param <E> абстрактный класс, который расширяет Number
      * @return минимальное значение массива
      */
-    public static int min(int[] values) {
-        int result = values[0];
+    public static <E extends Number> double min(E[] values) {
+        double result = values[0].doubleValue();
         for (int i = 1; i < values.length; i++) {
             result = min(result, values[i]);
         }
